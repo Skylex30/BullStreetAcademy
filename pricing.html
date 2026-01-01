@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — Bullstreet Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Bullstreet Academy home">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="logo-placeholder.png" alt="Bullstreet Academy" class="logo" width="32" height="32" />
+        </span>
+        <span class="brand-name">Bullstreet<span class="brand-accent"> Academy</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="course.html" id="courseLink">Course (Members only)</a>
+        <a href="cart.html">Cart</a>
+        <a href="charts.html">Charts</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="btn btn-ghost" onclick="openAuthModal()">Register</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="pricing">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Choose your Package</h2>
+          <p class="section-sub">Select the plan that fits your learning goals.</p>
+        </div>
+      </div>
+
+      <div class="plans">
+        <div class="plan">
+          <h3>Ordinary</h3>
+          <p>Group chart analysis with the team.</p>
+          <p class="price">$49</p>
+          <p>5-day course access</p>
+          <ul style="list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 8px; font-size: 14px; color: var(--muted);">
+            <li>✓ Live and recorded sessions</li>
+            <li>✓ Group chart analysis</li>
+            <li>✓ 5-day intensive course</li>
+            <li>✓ Secure access after payment</li>
+          </ul>
+          <button class="btn btn-primary" onclick="addToCart('ordinary', 'Ordinary Package', 49)">Add to Cart</button>
+        </div>
+
+        <div class="plan plan--featured">
+          <h3>Premium</h3>
+          <p>Includes one-on-one chart analysis with the instructor and the team.</p>
+          <p class="price">$199</p>
+          <p>5-day course + 1:1 sessions</p>
+          <ul style="list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 8px; font-size: 14px; color: var(--muted);">
+            <li>✓ Everything in Ordinary</li>
+            <li>✓ One-on-one chart analysis</li>
+            <li>✓ Priority scheduling</li>
+            <li>✓ Private recordings</li>
+          </ul>
+          <button class="btn btn-primary" onclick="addToCart('premium', 'Premium Package', 199)">Add to Cart</button>
+        </div>
+      </div>
+
+      <section class="details" style="margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border);">
+        <h4 style="font-size: 18px; margin-bottom: 12px;">Payment methods</h4>
+        <ul style="list-style: none; padding: 0; display: grid; gap: 8px; color: var(--muted);">
+          <li>✓ Credit/Debit cards</li>
+          <li>✓ Mobile Money</li>
+          <li>✓ Wire transfer</li>
+        </ul>
+
+        <h4 style="font-size: 18px; margin: 24px 0 12px;">Security</h4>
+        <p style="color: var(--muted);">We store an encrypted access token in your browser (Web Crypto API). This token is required to open the member-only course page.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Bullstreet Academy</p>
+    </div>
+    <div class="social-links" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center;">
+      <p style="margin: 0 0 12px 0; color: var(--muted); font-size: 14px;">Follow us on social media</p>
+      <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Instagram">📷</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Facebook">👥</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="TikTok">🎵</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auth Modal -->
+  <div id="authModal" class="auth-modal-overlay">
+    <div class="auth-modal-container">
+      <button class="auth-modal-close">✕</button>
+      <div class="auth-curved-shape"></div>
+      <div class="auth-curved-shape2"></div>
+      <div class="auth-form-box login">
+        <h2 class="auth-animation" style="--delay: 0; --delay-out: 0">Login</h2>
+        <form id="authLoginForm" class="auth-animation" style="--delay: 1; --delay-out: 1">
+          <div class="auth-input-box auth-animation" style="--delay: 2; --delay-out: 2">
+            <input type="text" name="username" required />
+            <label>Username</label>
+            <span class="auth-input-icon">👤</span>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 3; --delay-out: 3">
+            <input type="password" name="password" required />
+            <label>Password</label>
+            <span class="auth-input-icon">🔒</span>
+          </div>
+          <button type="submit" class="auth-btn auth-animation" style="--delay: 4; --delay-out: 4">Login</button>
+          <div class="auth-regi-link auth-animation" style="--delay: 5; --delay-out: 5">
+            <p>Don't have an account? <br> <a href="#" class="auth-signup-link">Sign Up</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="auth-form-box register">
+        <h2 class="auth-animation" style="--delay: 0; --delay-in: 0">Register</h2>
+        <form id="authRegisterForm" class="auth-animation" style="--delay: 1; --delay-in: 1">
+          <div class="auth-input-box auth-animation" style="--delay: 2; --delay-in: 2">
+            <input type="text" name="username" required />
+            <label>Username</label>
+            <span class="auth-input-icon">👤</span>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 3; --delay-in: 3">
+            <input type="email" name="email" required />
+            <label>Email</label>
+            <span class="auth-input-icon">✉</span>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 4; --delay-in: 4">
+            <input type="date" id="authDob" name="dob" required />
+            <label>Date of Birth</label>
+            <small class="auth-hint">YYYY-MM-DD</small>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 5; --delay-in: 5">
+            <input type="password" name="password" required />
+            <label>Password</label>
+            <span class="auth-input-icon">🔒</span>
+          </div>
+          <button type="submit" class="auth-btn auth-animation" style="--delay: 6; --delay-in: 6">Register</button>
+          <div class="auth-regi-link auth-animation" style="--delay: 7; --delay-in: 7">
+            <p>Already have an account? <br> <a href="#" class="auth-signin-link">Sign In</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="auth-info-content login">
+        <h2 class="auth-animation" style="--delay: 0; --delay-out: 0">WELCOME BACK!</h2>
+        <p class="auth-animation" style="--delay: 1; --delay-out: 1">We're happy to have you with us again. Continue your trading journey with expert guidance and strategies.</p>
+      </div>
+      <div class="auth-info-content register">
+        <h2 class="auth-animation" style="--delay: 0; --delay-in: 0">JOIN BULLSTREET ACADEMY!</h2>
+        <p class="auth-animation" style="--delay: 1; --delay-in: 1">Start your trading journey today. Master trading with expert guidance, professional strategies, and comprehensive education.</p>
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="auth-modal.css" />
+  <script src="auth-modal.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

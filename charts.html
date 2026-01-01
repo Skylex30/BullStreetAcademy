@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Advanced Charts — Bullstreet Academy</title>
+  <meta name="description" content="Professional trading charts with real-time market data." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="charts.css" />
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Bullstreet Academy home">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="logo-placeholder.png" alt="Bullstreet Academy" class="logo" width="32" height="32" />
+        </span>
+        <span class="brand-name">Bullstreet<span class="brand-accent"> Academy</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="course.html" id="courseLink">Course (Members only)</a>
+        <a href="cart.html">Cart</a>
+        <a href="charts.html" class="active">Charts</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="btn btn-ghost" onclick="openAuthModal()">Register</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="charts-main" role="main">
+    <!-- Top Toolbar -->
+    <div class="charts-toolbar">
+      <div class="toolbar-left">
+        <div class="symbol-selector">
+          <button class="symbol-btn active" data-symbol="EURUSD">EUR/USD</button>
+          <button class="symbol-btn" data-symbol="GBPUSD">GBP/USD</button>
+          <button class="symbol-btn" data-symbol="USDJPY">USD/JPY</button>
+          <button class="symbol-btn" data-symbol="AUDUSD">AUD/USD</button>
+          <button class="symbol-btn" data-symbol="SPX500">S&P 500</button>
+          <button class="symbol-btn" data-symbol="NAS100">NASDAQ</button>
+          <button class="symbol-btn" data-symbol="BTCUSDT">BTC/USDT</button>
+          <button class="symbol-btn" data-symbol="ETHUSDT">ETH/USDT</button>
+        </div>
+      </div>
+      <div class="toolbar-center">
+        <div class="timeframe-selector">
+          <button class="tf-btn active" data-tf="1">1m</button>
+          <button class="tf-btn" data-tf="5">5m</button>
+          <button class="tf-btn" data-tf="15">15m</button>
+          <button class="tf-btn" data-tf="60">1h</button>
+          <button class="tf-btn" data-tf="240">4h</button>
+          <button class="tf-btn" data-tf="D">1D</button>
+        </div>
+      </div>
+      <div class="toolbar-right">
+        <div class="market-stats">
+          <div class="stat-item">
+            <span class="stat-label">Price</span>
+            <span class="stat-value" id="currentPrice">$0.00</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">24h Change</span>
+            <span class="stat-value change" id="priceChange">0.00%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">24h High</span>
+            <span class="stat-value" id="high24h">$0.00</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">24h Low</span>
+            <span class="stat-value" id="low24h">$0.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Chart Container -->
+    <div class="charts-container">
+      <div class="chart-wrapper">
+        <div class="chart-header">
+          <div class="chart-title">
+            <h2 id="chartSymbol">EUR/USD</h2>
+            <span class="chart-subtitle">Real-time Trading Chart</span>
+          </div>
+          <div class="chart-controls">
+            <button class="control-btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+            <button class="control-btn" id="settingsBtn" title="Settings">⚙</button>
+          </div>
+        </div>
+        <div class="tradingview-widget-container" id="tradingview-widget">
+          <!-- TradingView widget will be injected here -->
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="charts-sidebar">
+        <!-- Market Overview -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Market Overview</h3>
+          <div class="market-list" id="marketList">
+            <!-- Market items will be populated by JS -->
+          </div>
+        </div>
+
+        <!-- Order Book -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Order Book</h3>
+          <div class="orderbook">
+            <div class="orderbook-header">
+              <span>Price (USDT)</span>
+              <span>Amount</span>
+              <span>Total</span>
+            </div>
+            <div class="orderbook-asks" id="orderbookAsks">
+              <!-- Asks will be populated -->
+            </div>
+            <div class="orderbook-spread">
+              <span id="spreadValue">0.00</span>
+              <span id="spreadPercent">0.00%</span>
+            </div>
+            <div class="orderbook-bids" id="orderbookBids">
+              <!-- Bids will be populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Trades -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Recent Trades</h3>
+          <div class="trades-list" id="tradesList">
+            <!-- Trades will be populated -->
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 3D Background Animation -->
+    <div class="charts-3d-bg">
+      <canvas id="particlesCanvas"></canvas>
+    </div>
+  </main>
+
+  <!-- Chart.js for fallback charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@3.3.0/dist/chartjs-chart-financial.min.js"></script>
+  <script src="charts.js"></script>
+  <script src="scripts.js"></script>
+  
+  <!-- Auth Modal (no social links on charts page per user request) -->
+  <div id="authModal" class="auth-modal-overlay">
+    <div class="auth-modal-container">
+      <button class="auth-modal-close">✕</button>
+      <div class="auth-curved-shape"></div>
+      <div class="auth-curved-shape2"></div>
+      <div class="auth-form-box login">
+        <h2 class="auth-animation" style="--delay: 0; --delay-out: 0">Login</h2>
+        <form id="authLoginForm" class="auth-animation" style="--delay: 1; --delay-out: 1">
+          <div class="auth-input-box auth-animation" style="--delay: 2; --delay-out: 2">
+            <input type="text" name="username" required />
+            <label>Username</label>
+            <span class="auth-input-icon">👤</span>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 3; --delay-out: 3">
+            <input type="password" name="password" required />
+            <label>Password</label>
+            <span class="auth-input-icon">🔒</span>
+          </div>
+          <button type="submit" class="auth-btn auth-animation" style="--delay: 4; --delay-out: 4">Login</button>
+          <div class="auth-regi-link auth-animation" style="--delay: 5; --delay-out: 5">
+            <p>Don't have an account? <br> <a href="#" class="auth-signup-link">Sign Up</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="auth-form-box register">
+        <h2 class="auth-animation" style="--delay: 0; --delay-in: 0">Register</h2>
+        <form id="authRegisterForm" class="auth-animation" style="--delay: 1; --delay-in: 1">
+          <div class="auth-input-box auth-animation" style="--delay: 2; --delay-in: 2">
+            <input type="text" name="username" required />
+            <label>Username</label>
+            <span class="auth-input-icon">👤</span>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 3; --delay-in: 3">
+            <input type="email" name="email" required />
+            <label>Email</label>
+            <span class="auth-input-icon">✉</span>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 4; --delay-in: 4">
+            <input type="date" id="authDob" name="dob" required />
+            <label>Date of Birth</label>
+            <small class="auth-hint">YYYY-MM-DD</small>
+          </div>
+          <div class="auth-input-box auth-animation" style="--delay: 5; --delay-in: 5">
+            <input type="password" name="password" required />
+            <label>Password</label>
+            <span class="auth-input-icon">🔒</span>
+          </div>
+          <button type="submit" class="auth-btn auth-animation" style="--delay: 6; --delay-in: 6">Register</button>
+          <div class="auth-regi-link auth-animation" style="--delay: 7; --delay-in: 7">
+            <p>Already have an account? <br> <a href="#" class="auth-signin-link">Sign In</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="auth-info-content login">
+        <h2 class="auth-animation" style="--delay: 0; --delay-out: 0">WELCOME BACK!</h2>
+        <p class="auth-animation" style="--delay: 1; --delay-out: 1">We're happy to have you with us again. Continue your trading journey with expert guidance and strategies.</p>
+      </div>
+      <div class="auth-info-content register">
+        <h2 class="auth-animation" style="--delay: 0; --delay-in: 0">JOIN BULLSTREET ACADEMY!</h2>
+        <p class="auth-animation" style="--delay: 1; --delay-in: 1">Start your trading journey today. Master trading with expert guidance, professional strategies, and comprehensive education.</p>
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="auth-modal.css" />
+  <script src="auth-modal.js"></script>
+</body>
+</html>
+

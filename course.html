@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Course — Bullstreet Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Bullstreet Academy home">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="logo-placeholder.png" alt="Bullstreet Academy" class="logo" width="28" height="28" />
+        </span>
+        <span class="brand-name">Bullstreet<span class="brand-accent"> Academy</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="course.html">Course (Members only)</a>
+        <a href="cart.html">Cart</a>
+        <a href="charts.html">Charts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section id="courseContent" class="course" style="padding: 24px 0;">
+      <div class="section-head">
+        <h2 class="section-title">Course (Members only)</h2>
+        <p class="section-sub">Access your purchased course content</p>
+      </div>
+
+      <div id="locked" class="locked">
+        <p>This content is restricted. Please purchase access first.</p>
+        <div class="hero-actions" style="margin-top: 16px;">
+          <a class="btn btn-primary" href="pricing.html">Go to Pricing</a>
+        </div>
+      </div>
+
+      <div id="unlocked" style="display:none;">
+        <div class="card" style="padding: 24px; margin-bottom: 24px;">
+          <h3 style="margin-top: 0;">5-Day Intensive Course</h3>
+          <ol style="padding-left: 1.5rem; line-height: 2;">
+            <li><strong>Day 1</strong> — Introduction to Chart Reading & Key Indicators</li>
+            <li><strong>Day 2</strong> — Trend Analysis & Risk Management</li>
+            <li><strong>Day 3</strong> — Advanced Patterns and Entry/Exit Strategies</li>
+            <li><strong>Day 4</strong> — Live Chart Analysis with the Team</li>
+            <li><strong>Day 5</strong> — Final Review & One-on-One Sessions (for Premium)</li>
+          </ol>
+        </div>
+
+        <div class="card" style="padding: 24px;">
+          <h4 style="margin-top: 0;">Premium Features</h4>
+          <ul style="list-style: none; padding: 0; display: grid; gap: 12px;">
+            <li>✓ One-on-one chart analysis with the instructor and the team</li>
+            <li>✓ Priority scheduling for 1:1 sessions</li>
+            <li>✓ Private recordings of 1:1 consultations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Bullstreet Academy</p>
+    </div>
+    <div class="social-links" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center;">
+      <p style="margin: 0 0 12px 0; color: var(--muted); font-size: 14px;">Follow us on social media</p>
+      <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Instagram">📷</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Facebook">👥</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="TikTok">🎵</a>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="auth-modal.css" />
+  <script src="auth-modal.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

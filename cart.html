@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart — Bullstreet Academy</title>
+  <meta name="description" content="Your shopping cart at Bullstreet Academy." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Bullstreet Academy home">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="logo-placeholder.png" alt="Bullstreet Academy" class="logo" width="28" height="28" />
+        </span>
+        <span class="brand-name">Bullstreet<span class="brand-accent"> Academy</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="course.html">Course (Members only)</a>
+        <a href="cart.html">Cart</a>
+        <a href="charts.html">Charts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="cart" aria-labelledby="cart-heading">
+      <div class="section-head">
+        <h1 id="cart-heading" class="section-title">My Cart</h1>
+        <p class="section-sub">Review your items before checkout.</p>
+      </div>
+
+      <div class="cart-grid">
+        <div class="card cart-items">
+          <ul class="items" id="cartItems">
+            <!-- Cart items will be populated by JavaScript -->
+          </ul>
+          <div id="emptyCart" style="display:none; padding: 2rem; text-align: center; color: var(--muted);">
+            <p>Your cart is empty.</p>
+            <a class="btn btn-primary" href="pricing.html">Browse Packages</a>
+          </div>
+        </div>
+
+        <aside class="card summary" aria-label="Cart summary">
+          <h2 class="card-title">Summary</h2>
+          <div class="totals">
+            <div>
+              <span class="muted">Subtotal</span>
+              <span id="subtotal">$0</span>
+            </div>
+            <div>
+              <span class="muted">Tax</span>
+              <span id="tax">$0</span>
+            </div>
+            <div class="grand">
+              <strong>Total</strong>
+              <strong id="grand">$0</strong>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="index.html">Continue Shopping</a>
+            <a class="btn btn-primary" href="payment.html" id="checkoutBtn">Proceed to Payment</a>
+          </div>
+          <p class="secure-note">🔒 Secure checkout guaranteed.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Bullstreet Academy</p>
+    </div>
+    <div class="social-links" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center;">
+      <p style="margin: 0 0 12px 0; color: var(--muted); font-size: 14px;">Follow us on social media</p>
+      <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Instagram">📷</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Facebook">👥</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="TikTok">🎵</a>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="auth-modal.css" />
+  <script src="auth-modal.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
+

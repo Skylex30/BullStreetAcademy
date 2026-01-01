@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payment — Bullstreet Academy</title>
+  <meta name="description" content="Checkout and payment for Bullstreet Academy orders." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Bullstreet Academy home">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="logo-placeholder.png" alt="Bullstreet Academy" class="logo" width="28" height="28" />
+        </span>
+        <span class="brand-name">Bullstreet<span class="brand-accent"> Academy</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="course.html">Course (Members only)</a>
+        <a href="cart.html">Cart</a>
+        <a href="charts.html">Charts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="checkout" aria-labelledby="checkout-heading">
+      <div class="section-head">
+        <h1 id="checkout-heading" class="section-title">Checkout</h1>
+        <p class="section-sub">Secure payment powered by Bullstreet Academy</p>
+      </div>
+
+      <div class="checkout-grid">
+        <form class="card form" id="paymentForm" novalidate>
+          <h2 class="card-title">Billing Details</h2>
+          <div class="field-grid">
+            <label class="field">
+              <span>Full name</span>
+              <input type="text" name="name" placeholder="John Doe" required />
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label class="field">
+              <span>Phone</span>
+              <input type="tel" name="phone" placeholder="+1 234 567 8900" required />
+            </label>
+            <label class="field">
+              <span>Address</span>
+              <input type="text" name="address" placeholder="Street, City" required />
+            </label>
+          </div>
+
+          <h2 class="card-title">Payment Method</h2>
+          <div class="pay-methods">
+            <label class="radio">
+              <input type="radio" name="method" value="card" checked />
+              <span>Card</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="method" value="mobile" />
+              <span>Mobile Money</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="method" value="wire" />
+              <span>Wire Transfer</span>
+            </label>
+          </div>
+
+          <div class="card-fields" data-pay="card">
+            <label class="field">
+              <span>Card number</span>
+              <input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" />
+            </label>
+            <div class="field-grid-3">
+              <label class="field">
+                <span>Expiry</span>
+                <input type="text" inputmode="numeric" placeholder="MM/YY" />
+              </label>
+              <label class="field">
+                <span>CVC</span>
+                <input type="text" inputmode="numeric" placeholder="CVC" />
+              </label>
+              <label class="field">
+                <span>ZIP</span>
+                <input type="text" placeholder="Code" />
+              </label>
+            </div>
+          </div>
+
+          <div class="mobile-fields hidden" data-pay="mobile">
+            <label class="field">
+              <span>Mobile number</span>
+              <input type="tel" placeholder="MTN/Airtel number" />
+            </label>
+            <p class="muted" style="font-size: 12px; margin-top: 8px;">You will receive payment instructions via SMS.</p>
+          </div>
+
+          <div class="wire-fields hidden" data-pay="wire">
+            <div class="notice">
+              <p><strong>Wire Transfer Instructions:</strong></p>
+              <p>Please transfer the total amount to:</p>
+              <p>Account: [Your Account Details]<br>
+              Bank: [Bank Name]<br>
+              SWIFT: [SWIFT Code]</p>
+              <p>Include your order reference in the transfer notes.</p>
+            </div>
+          </div>
+
+          <button class="btn btn-primary pay-btn" type="submit">Pay Now</button>
+          <p class="secure-note">🔒 Your payment is secure and encrypted.</p>
+        </form>
+
+        <aside class="card summary" aria-label="Order summary">
+          <h2 class="card-title">Order Summary</h2>
+          <ul class="items" id="orderItems">
+            <!-- Order items will be populated by JavaScript -->
+          </ul>
+          <div class="totals">
+            <div>
+              <span class="muted">Subtotal</span>
+              <span id="orderSubtotal">$0</span>
+            </div>
+            <div>
+              <span class="muted">Tax</span>
+              <span id="orderTax">$0</span>
+            </div>
+            <div class="grand">
+              <strong>Total</strong>
+              <strong id="orderTotal">$0</strong>
+            </div>
+          </div>
+          <div class="notes muted">Have a discount code? Apply at payment.</div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Bullstreet Academy</p>
+    </div>
+    <div class="social-links" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center;">
+      <p style="margin: 0 0 12px 0; color: var(--muted); font-size: 14px;">Follow us on social media</p>
+      <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Instagram">📷</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="Facebook">👥</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 24px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" aria-label="TikTok">🎵</a>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="auth-modal.css" />
+  <script src="auth-modal.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
+
